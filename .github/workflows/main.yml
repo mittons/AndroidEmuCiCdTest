@@ -19,6 +19,7 @@ jobs:
       run: |
         wget https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip
         unzip commandlinetools-linux-7583922_latest.zip -d ${{ runner.temp }}/cmdline-tools
+        dir ${{ runner.temp }}/cmdline-tools
         echo ${{ runner.temp }}/cmdline-tools/bin >> $GITHUB_PATH
         echo ${{ runner.temp }}/cmdline-tools/cmdline-tools/bin >> $GITHUB_PATH
         echo ${{ runner.temp }}/cmdline-tools/latest/bin >> $GITHUB_PATH
