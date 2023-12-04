@@ -49,6 +49,10 @@ jobs:
         dir $ANDROID_SDK_ROOT
         echo "=============="
         #dir ${{ runner.temp }}/cmdline-tools/cmdline-tools
+        echo "=============="
+        echo "PATH"
+        dir $PATH
+        echo "=============="
     - name: install 2 - path
       run: |
         echo $ANDROID_SDK_ROOT/cmdline-tools/latest/bin >> $GITHUB_PATH
@@ -59,6 +63,9 @@ jobs:
         echo "=============="
         echo "Runner temp DIRECTORY:"
         dir ${{ runner.temp }}
+        echo "=============="
+        echo "PATH"
+        dir $PATH
         echo "=============="
     - name: install 3 - sdk lisences
       run: yes | sdkmanager --licenses
