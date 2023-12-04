@@ -64,6 +64,9 @@ jobs:
         echo "Runner temp DIRECTORY:"
         dir ${{ runner.temp }}
         echo "=============="
+        echo "andrd bin folder"
+        dir ${{runner.temp}}/android/cmdline-tools/latest/bin
+        echo "=============="
         echo "PATH"
         echo $PATH
         echo "=============="
