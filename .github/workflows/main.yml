@@ -17,7 +17,8 @@ jobs:
         flutter-version: '3.16.1'
     - name: Create and start emulator
       run: |
-        echo "no" | $ANDROID_SDK_ROOT/cmdline-tools/bin/avdmanager create avd --force --name testEmulator --package 'system-images;android-30;google_apis;x86_64' --abi google_apis/x86_64 --device "pixel"
+        dir $ANDROID_SDK_ROOT/cmdline-tools/
+        echo "no" | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/avdmanager create avd --force --name testEmulator --package 'system-images;android-30;google_apis;x86_64' --abi google_apis/x86_64 --device "pixel"
         echo "=============="
         $ANDROID_HOME/emulator/emulator -avd testEmulator -no-window -no-audio -no-boot-anim &
         echo "=============="
