@@ -32,8 +32,12 @@ jobs:
     - name: install 2
       run: |
         echo "GHPATH - $PATH"
-        yes | ${{ runner.temp }}/cmdline-tools/cmdline-tools/bin/sdkmanager --licenses
-        ${{ runner.temp }}/cmdline-tools/cmdline-tools/bin/sdkmanager "build-tools;30.0.3" "platform-tools" "platforms;android-30" "emulator" "system-images;android-30;google_apis;x86_64"
+        yes | sdkmanager --licenses
+        sdkmanager "build-tools;30.0.3" "platform-tools" "platforms;android-30" "emulator" "system-images;android-30;google_apis;x86_64"
+    - name: install 3
+      run: |
+        which sdkmanager
+        which avdmanager
     - name: Create and start emulator
       run: |
         echo "no" | ${{ runner.temp }}/cmdline-tools/cmdline-tools/bin/avdmanager create avd --force --name testEmulator --package 'system-images;android-30;google_apis;x86_64' --abi google_apis/x86_64 --device "pixel"
