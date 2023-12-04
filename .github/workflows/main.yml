@@ -65,7 +65,7 @@ jobs:
         dir ${{ runner.temp }}
         echo "=============="
         echo "PATH"
-        dir $PATH
+        echo $PATH
         echo "=============="
     - name: install 3 - sdk lisences
       run: yes | sdkmanager --licenses
