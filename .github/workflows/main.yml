@@ -51,9 +51,9 @@ jobs:
         #dir ${{ runner.temp }}/cmdline-tools/cmdline-tools
     - name: install 2 - path
       run: |
+        echo $ANDROID_SDK_ROOT/cmdline-tools/latest/bin >> $GITHUB_PATH
         #echo ${{ runner.temp }}/cmdline-tools/bin >> $GITHUB_PATH
         #echo ${{ runner.temp }}/cmdline-tools/cmdline-tools/bin >> $GITHUB_PATH
-        echo $ANDROID_SDK_ROOT/cmdline-tools/latest/bin >> $GITHUB_PATH
     - name: install 2.5
       run: |
         echo "=============="
