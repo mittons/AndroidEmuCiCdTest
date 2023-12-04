@@ -15,31 +15,48 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         flutter-version: '3.16.1'
+    - name: install 0.5
+      run: |
+        echo "=============="
+        echo "Runner temp DIRECTORY:"
+        dir ${{ runner.temp }}
+        echo "=============="
     - name: Install Android SDK
       run: |
-        echo "Test123"
-        dir ${{ runner.temp }}
         wget https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip
         unzip commandlinetools-linux-7583922_latest.zip -d ${{ runner.temp }}/cmdline-tools
-        echo "Test123"
+    - name: install 1.5
+      run: |
+        echo "=============="
+        echo "Runner temp DIRECTORY:"
         dir ${{ runner.temp }}
-        dir ${{ runner.temp }}/cmdline-tools/cmdline-tools
-        
-        echo "GHPATH - $PATH"
+        echo "=============="
+        #dir ${{ runner.temp }}/cmdline-tools/cmdline-tools
+    - name: install 2 - path
+      run: |
         echo ${{ runner.temp }}/cmdline-tools/bin >> $GITHUB_PATH
         echo ${{ runner.temp }}/cmdline-tools/cmdline-tools/bin >> $GITHUB_PATH
         echo ${{ runner.temp }}/cmdline-tools/latest/bin >> $GITHUB_PATH
-    - name: install 2
+    - name: install 2.5
       run: |
-        echo "GHPATH - $PATH"
-        yes | sdkmanager --licenses
-        sdkmanager "build-tools;30.0.3" "platform-tools" "platforms;android-30" "emulator" "system-images;android-30;google_apis;x86_64"
-    - name: install 3
-      run: |
-        which sdkmanager
-        which avdmanager
-        echo "Test123"
+        echo "=============="
+        echo "Runner temp DIRECTORY:"
         dir ${{ runner.temp }}
+        echo "=============="
+    - name: install 3 - sdk lisences
+      run: yes | sdkmanager --licenses
+    - name: install 3.1 - sdk components
+      run: sdkmanager "build-tools;30.0.3" "platform-tools" "platforms;android-30" "emulator" "system-images;android-30;google_apis;x86_64"
+    - name: install 3.5
+      run: |
+        echo "=============="
+        echo "Runner temp DIRECTORY:"
+        dir ${{ runner.temp }}
+        echo "=============="
+        echo "ASR $ANDROID_SDK_ROOT"
+        echo "=============="
+        echo "AH $ANDROID_HOME"
+        echo "=============="
     - name: Create and start emulator
       run: |
         echo "no" | ${{ runner.temp }}/cmdline-tools/cmdline-tools/bin/avdmanager create avd --force --name testEmulator --package 'system-images;android-30;google_apis;x86_64' --abi google_apis/x86_64 --device "pixel"
