@@ -21,6 +21,13 @@ jobs:
         echo "Runner temp DIRECTORY:"
         dir ${{ runner.temp }}
         echo "=============="
+        echo "ASR $ANDROID_SDK_ROOT"
+        echo "=============="
+        echo "AH $ANDROID_HOME"
+        echo "=============="
+        echo "ASR dir"
+        dir $ANDROID_SDK_ROOT
+        echo "=============="
     - name: Install Android SDK
       run: |
         mkdir ${{ runner.temp }}/android
@@ -33,6 +40,13 @@ jobs:
         echo "=============="
         echo "Runner temp DIRECTORY:"
         dir ${{ runner.temp }}
+        echo "=============="        
+        echo "ASR $ANDROID_SDK_ROOT"
+        echo "=============="
+        echo "AH $ANDROID_HOME"
+        echo "=============="
+        echo "ASR dir"
+        dir $ANDROID_SDK_ROOT
         echo "=============="
         #dir ${{ runner.temp }}/cmdline-tools/cmdline-tools
     - name: install 2 - path
