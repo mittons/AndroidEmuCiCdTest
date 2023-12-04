@@ -23,8 +23,11 @@ jobs:
         echo "=============="
     - name: Install Android SDK
       run: |
+        mkdir ${{ runner.temp }}/android
+        echo "ANDROID_SDK_ROOT=${{ runner.temp }}/android" >> $GITHUB_ENV
+        echo "ANDROID_HOME=${{ runner.temp }}/android" >> $GITHUB_ENV
         wget https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip
-        unzip commandlinetools-linux-7583922_latest.zip -d ${{ runner.temp }}/cmdline-tools
+        unzip commandlinetools-linux-7583922_latest.zip -d ${{ runner.temp }}/android
     - name: install 1.5
       run: |
         echo "=============="
@@ -34,9 +37,9 @@ jobs:
         #dir ${{ runner.temp }}/cmdline-tools/cmdline-tools
     - name: install 2 - path
       run: |
-        echo ${{ runner.temp }}/cmdline-tools/bin >> $GITHUB_PATH
-        echo ${{ runner.temp }}/cmdline-tools/cmdline-tools/bin >> $GITHUB_PATH
-        echo ${{ runner.temp }}/cmdline-tools/latest/bin >> $GITHUB_PATH
+        #echo ${{ runner.temp }}/cmdline-tools/bin >> $GITHUB_PATH
+        #echo ${{ runner.temp }}/cmdline-tools/cmdline-tools/bin >> $GITHUB_PATH
+        echo $ANDROID_SDK_ROOT/cmdline-tools/latest/bin >> $GITHUB_PATH
     - name: install 2.5
       run: |
         echo "=============="
