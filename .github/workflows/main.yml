@@ -68,10 +68,8 @@ jobs:
         dir ${{runner.temp}}/android/
         echo "cmdline-tools"
         dir ${{runner.temp}}/android/cmdline-tools/
-        echo "latest"
-        dir ${{runner.temp}}/android/cmdline-tools/latest/
         echo "bin"
-        dir ${{runner.temp}}/android/cmdline-tools/latest/bin
+        dir ${{runner.temp}}/android/cmdline-tools/bin
         echo "=============="
         echo "PATH"
         echo $PATH
