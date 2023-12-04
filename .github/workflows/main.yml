@@ -51,7 +51,7 @@ jobs:
         #dir ${{ runner.temp }}/cmdline-tools/cmdline-tools
         echo "=============="
         echo "PATH"
-        dir $PATH
+        echo $PATH
         echo "=============="
     - name: install 2 - path
       run: |
