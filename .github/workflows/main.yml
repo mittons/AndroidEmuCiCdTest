@@ -68,6 +68,12 @@ jobs:
         echo "ASR dir"
         dir $ANDROID_SDK_ROOT
         echo "=============="
+        echo "sdkmanager version"
+        sdkmanager --version
+        echo "=============="
+        echo "avdmanager version"
+        avdmanager --version
+        echo "=============="
     - name: Create and start emulator
       run: |
         echo "no" | ${{ runner.temp }}/cmdline-tools/cmdline-tools/bin/avdmanager create avd --force --name testEmulator --package 'system-images;android-30;google_apis;x86_64' --abi google_apis/x86_64 --device "pixel"
