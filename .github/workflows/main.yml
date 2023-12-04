@@ -17,15 +17,19 @@ jobs:
         flutter-version: '3.16.1'
     - name: Install Android SDK
       run: |
+        echo "Test123"
         dir ${{ runner.temp }}
         wget https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip
         unzip commandlinetools-linux-7583922_latest.zip -d ${{ runner.temp }}/cmdline-tools
+        echo "Test123"
+        dir ${{ runner.temp }}
         dir ${{ runner.temp }}/cmdline-tools/cmdline-tools
-        echo "GHPATH - $GITHUB_PATH"
+        
+        echo "GHPATH - $PATH"
         echo ${{ runner.temp }}/cmdline-tools/bin >> $GITHUB_PATH
         echo ${{ runner.temp }}/cmdline-tools/cmdline-tools/bin >> $GITHUB_PATH
         echo ${{ runner.temp }}/cmdline-tools/latest/bin >> $GITHUB_PATH
-        echo "GHPATH - $GITHUB_PATH"
+        echo "GHPATH - $PATH"
         yes | ${{ runner.temp }}/cmdline-tools/cmdline-tools/bin/sdkmanager --licenses
         ${{ runner.temp }}/cmdline-tools/cmdline-tools/bin/sdkmanager "build-tools;30.0.3" "platform-tools" "platforms;android-30" "emulator" "system-images;android-30;google_apis;x86_64"
     - name: Create and start emulator
