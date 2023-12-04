@@ -46,15 +46,15 @@ jobs:
     - name: install 3 - sdk lisences
       run: yes | sdkmanager --licenses
     - name: install 3.1.1 - sdk components - build tools
-      run: sdkmanager "build-tools;30.0.3"
+      run: sdkmanager --sdk_root=${ANDROID_SDK_ROOT} "build-tools;30.0.3"
     - name: install 3.1.2 - sdk components - platform tools
-      run: sdkmanager "platform-tools"
+      run: sdkmanager --sdk_root=${ANDROID_SDK_ROOT} "platform-tools"
     - name: install 3.1.3 - sdk components - platform
-      run: sdkmanager "platforms;android-30"
+      run: sdkmanager --sdk_root=${ANDROID_SDK_ROOT} "platforms;android-30"
     - name: install 3.1.4 - sdk components - emulator
-      run: sdkmanager "emulator"
+      run: sdkmanager --sdk_root=${ANDROID_SDK_ROOT} "emulator"
     - name: install 3.1.5 - sdk components - system images
-      run: sdkmanager "system-images;android-30;google_apis;x86_64"
+      run: sdkmanager --sdk_root=${ANDROID_SDK_ROOT} "system-images;android-30;google_apis;x86_64"
     - name: install 3.5
       run: |
         echo "=============="
@@ -67,12 +67,6 @@ jobs:
         echo "=============="
         echo "ASR dir"
         dir $ANDROID_SDK_ROOT
-        echo "=============="
-        echo "sdkmanager version"
-        sdkmanager --version
-        echo "=============="
-        echo "avdmanager version"
-        avdmanager --version
         echo "=============="
     - name: Create and start emulator
       run: |
