@@ -32,7 +32,7 @@ jobs:
       run: |
         mkdir ${{ runner.temp }}/android
         echo "ANDROID_SDK_ROOT=${{ runner.temp }}/android" >> $GITHUB_ENV
-        echo "ANDROID_HOME=${{ runner.temp }}/android" >> $GITHUB_ENV
+        echo "ANDROID_HOME=${{ runner.temp }}" >> $GITHUB_ENV
         wget https://dl.google.com/android/repository/commandlinetools-linux-7583922_latest.zip
         unzip commandlinetools-linux-7583922_latest.zip -d ${{ runner.temp }}/android
     - name: install 1.5
