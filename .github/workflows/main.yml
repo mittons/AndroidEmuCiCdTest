@@ -65,6 +65,9 @@ jobs:
         echo "=============="
         echo "AH $ANDROID_HOME"
         echo "=============="
+        echo "ASR dir"
+        dir $ANDROID_SDK_ROOT
+        echo "=============="
     - name: Create and start emulator
       run: |
         echo "no" | ${{ runner.temp }}/cmdline-tools/cmdline-tools/bin/avdmanager create avd --force --name testEmulator --package 'system-images;android-30;google_apis;x86_64' --abi google_apis/x86_64 --device "pixel"
