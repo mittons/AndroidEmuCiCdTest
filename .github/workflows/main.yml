@@ -29,6 +29,8 @@ jobs:
         echo ${{ runner.temp }}/cmdline-tools/bin >> $GITHUB_PATH
         echo ${{ runner.temp }}/cmdline-tools/cmdline-tools/bin >> $GITHUB_PATH
         echo ${{ runner.temp }}/cmdline-tools/latest/bin >> $GITHUB_PATH
+    - name: install 2
+      run: |
         echo "GHPATH - $PATH"
         yes | ${{ runner.temp }}/cmdline-tools/cmdline-tools/bin/sdkmanager --licenses
         ${{ runner.temp }}/cmdline-tools/cmdline-tools/bin/sdkmanager "build-tools;30.0.3" "platform-tools" "platforms;android-30" "emulator" "system-images;android-30;google_apis;x86_64"
