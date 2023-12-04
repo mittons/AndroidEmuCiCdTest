@@ -75,7 +75,7 @@ jobs:
         echo $PATH
         echo "=============="
     - name: install 3 - sdk lisences
-      run: yes | sdkmanager --licenses
+      run: yes | sdkmanager -sdk_root=${ANDROID_SDK_ROOT} --licenses
     - name: install 3.1.1 - sdk components - build tools
       run: sdkmanager --sdk_root=${ANDROID_SDK_ROOT} "build-tools;30.0.3"
     - name: install 3.1.2 - sdk components - platform tools
