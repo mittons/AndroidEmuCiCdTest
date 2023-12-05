@@ -5,30 +5,12 @@ on: [push]
 
 jobs:
   build-and-test:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     steps:
     - uses: actions/checkout@v4
-    - name: hello
-      run: echo $ANDROID_SDK_ROOT
-    - uses: actions/setup-java@v2
-      with:
-        distribution: 'adopt'
-        java-version: '11'
     - uses: subosito/flutter-action@v2
       with:
         flutter-version: '3.16.1'
-    - name: Create and start emulator
-      run: |
-        cat $ANDROID_SDK_ROOT/packages-list.txt
-        dir $ANDROID_SDK_ROOT
-        yes | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/sdkmanager "system-images;android-30;google_apis;x86_64"
-        echo "no" | $ANDROID_SDK_ROOT/cmdline-tools/latest/bin/avdmanager create avd --force --name testEmulator --package 'system-images;android-30;google_apis;x86_64' --abi google_apis/x86_64 --device "pixel"
-        echo "=============="
-        $ANDROID_HOME/emulator/emulator -avd testEmulator -no-window -no-audio -no-boot-anim &
-        echo "=============="
-        $ANDROID_HOME/platform-tools/adb wait-for-device get-serialno
-        echo "=============="
-        $ANDROID_HOME/platform-tools/adb shell input keyevent 82
     - run: flutter pub get
     - run: flutter devices
     - run: flutter test integration_test -d emulator-5554
