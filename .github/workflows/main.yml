@@ -13,5 +13,5 @@ jobs:
         flutter-version: '3.16.1'
     - run: flutter pub get
     - run: flutter devices
-    - run: flutter test integration_test -d emulator-5554
+    - run: flutter test integration_test -d windows
         
