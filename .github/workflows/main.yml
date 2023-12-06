@@ -25,8 +25,11 @@ jobs:
         echo ${{ runner.temp }}/cmdline-tools/latest/bin >> $GITHUB_PATH
         yes | ${{ runner.temp }}/cmdline-tools/cmdline-tools/bin/sdkmanager --licenses
         ${{ runner.temp }}/cmdline-tools/cmdline-tools/bin/sdkmanager "build-tools;30.0.3" "platform-tools" "platforms;android-30" "emulator" "system-images;android-30;google_apis;x86_64"
+
     - name: Create and start emulator
       run: |
+        echo "hello"
+        
         echo "no" | ${{ runner.temp }}/cmdline-tools/cmdline-tools/bin/avdmanager create avd --force --name testEmulator --package 'system-images;android-30;google_apis;x86_64' --abi google_apis/x86_64 --device "pixel"
         $ANDROID_HOME/emulator/emulator -avd testEmulator -no-window -no-audio -no-boot-anim &
         $ANDROID_HOME/platform-tools/adb wait-for-device get-serialno
