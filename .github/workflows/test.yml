@@ -1,0 +1,24 @@
+
+name: Flutter Android CI
+
+on:
+  push:
+    branches:
+      testbranch
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - uses: subosito/flutter-action@v2
+      with:
+        flutter-version: '3.16.1'
+
+    - name: setup-chromedriver
+      uses: nanasess/setup-chromedriver@v2.2.1
+    
+#    - run: flutter pub get
+#    - run: flutter devices
+#    - run: flutter test integration_test -d windows
+        
