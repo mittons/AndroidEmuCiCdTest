@@ -59,7 +59,9 @@ jobs:
       run: flutter doctor -v
       
     - name: Install Dependencies
-      run: sudo apt-get update && sudo apt-get install -y wget unzip
+      run: | 
+        sudo apt-get update && sudo apt-get install -y wget unzip
+        sudo apt-get install libglib2.0-dev
       
     - name: Download and Set up Ninja
       run: |
