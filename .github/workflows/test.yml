@@ -18,46 +18,53 @@ jobs:
   
     - run: flutter pub get    
 
-    - name: Install Chrome Browser
-      uses: browser-actions/setup-chrome@v1
-      with:
-       chrome-version: '119.0.6045.105'
-      id: setup-chrome
+    # - name: Install Chrome Browser
+    #   uses: browser-actions/setup-chrome@v1
+    #   with:
+    #    chrome-version: '119.0.6045.105'
+    #   id: setup-chrome
   
-    - name: Check Browser version
-      run: |
-        echo Installed chromium version: ${{ steps.setup-chrome.outputs.chrome-version }}
-        ${{ steps.setup-chrome.outputs.chrome-path }} --version
+    # - name: Check Browser version
+    #   run: |
+    #     echo Installed chromium version: ${{ steps.setup-chrome.outputs.chrome-version }}
+    #     ${{ steps.setup-chrome.outputs.chrome-path }} --version
     
-    - name: setup chromedriver
-      uses: nanasess/setup-chromedriver@v2.2.1
+    # - name: setup chromedriver
+    #   uses: nanasess/setup-chromedriver@v2.2.1
 
-    - name:  Delay
-      run: |
-        echo "Waiting for Chromedriver to start..."
-        sleep 20
+    # - name:  Delay
+    #   run: |
+    #     echo "Waiting for Chromedriver to start..."
+    #     sleep 20
 
-    - name: 🪛 Start Chromedriver
-      run: |
-        export DISPLAY=:99
-        chromedriver --url-base=/wd/hub --port=4444 --verbose &
-        sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
+    # - name: 🪛 Start Chromedriver
+    #   run: |
+    #     export DISPLAY=:99
+    #     chromedriver --url-base=/wd/hub --port=4444 --verbose &
+    #     sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 &
 
-    - name: Check Chromedriver Version
-      run: chromedriver -v
+    # - name: Check Chromedriver Version
+    #   run: chromedriver -v
 
-    - name: Delay
-      run: |
-        echo "Waiting for Chromedriver to start..."
-        sleep 15
+    # - name: Delay
+    #   run: |
+    #     echo "Waiting for Chromedriver to start..."
+    #     sleep 15
 
-    - name:  Check Chromedriver Port
-      run: |
-        lsof -i :4444
+    # - name:  Check Chromedriver Port
+    #   run: |
+    #     lsof -i :4444
 
     - name: Flutter Doctor
       run: flutter doctor -v
-
+      
+    - name: Download and Set up Ninja
+      run: |
+        wget https://github.com/ninja-build/ninja/releases/download/v1.10.2/ninja-linux.zip
+        unzip ninja-linux.zip
+        sudo mv ninja /usr/local/bin/
+        ninja --version
+        
     - name:  Run Integration Test
       run: |
         flutter config --enable-web
