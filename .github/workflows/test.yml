@@ -21,7 +21,7 @@ jobs:
     - name: Install Chrome Browser
       uses: browser-actions/setup-chrome@v1
       with:
-       chrome-version: stable
+       chrome-version: '119.0.6045.105'
       id: setup-chrome
   
     - name: Check Browser version
