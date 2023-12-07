@@ -72,7 +72,7 @@ jobs:
         ninja --version
         
     - name:  Run Integration Test
-      run: flutter drive --driver=test_driver/integration_test.dart --target=integration_test/widget_test.dart -d linux
+      run: flutter drive -v --driver=test_driver/integration_test.dart --target=integration_test/widget_test.dart -d linux
     
 #    - run: flutter pub get
 #    - run: flutter devices
