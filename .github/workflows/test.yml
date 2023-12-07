@@ -14,6 +14,7 @@ jobs:
     - uses: subosito/flutter-action@v2
       with:
         flutter-version: '3.16.1'
+        cache: true
     - run: flutter pub get
     - run: flutter devices
     - run: flutter test integration_test -d windows
